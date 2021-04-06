@@ -29,6 +29,14 @@ android {
 }
 
 dependencies {
+    //Picasso : chargement d'image
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
+    //Volley: requete HTTP
+    implementation group: 'com.android.volley', name: 'volley', version: '1.1.1'
+
+    //GSON: lecture JSON
+    implementation group: 'com.google.code.gson', name: 'gson', version: '2.8.6'
 
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'com.google.android.material:material:1.3.0'
