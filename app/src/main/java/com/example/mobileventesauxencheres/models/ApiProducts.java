@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class ApiProducts implements Serializable {
     private String title;
-    private int price;
+    private String price;
     private String description;
     private String image;
     private String dateStart;
@@ -18,11 +18,11 @@ public class ApiProducts implements Serializable {
         this.title = title;
     }
 
-    public int getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 

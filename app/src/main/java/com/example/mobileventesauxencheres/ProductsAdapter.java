@@ -21,8 +21,8 @@ import java.util.List;
 public class ProductsAdapter extends ArrayAdapter<ApiProducts> {
 
 
-    public ProductsAdapter(Context context, int resource, ApiProducts api) {
-        super(context,resource, (List<ApiProducts>) api);
+    public ProductsAdapter(Context context, int resource, ApiProducts[] api) {
+        super(context,resource, api);
 
     }
 
@@ -37,11 +37,10 @@ public class ProductsAdapter extends ArrayAdapter<ApiProducts> {
             myViewHolder = new ViewHolder(); // instance
 
             // 2) récupération des vues (élements graphiques)
-            myViewHolder.imageViewProduct = convertView.findViewById(R.id.imageViewProduct);
+            //myViewHolder.imageViewProduct = convertView.findViewById(R.id.imageViewProduct);
             myViewHolder.textViewTitle = convertView.findViewById(R.id.textViewTitle);
             myViewHolder.textViewDescription = convertView.findViewById(R.id.textViewDescription);
             myViewHolder.textViewPrice = convertView.findViewById(R.id.textViewPrice);
-
 
             convertView.setTag(myViewHolder); // enregistrement du ViewHolder (qui contient le titre et la catégorie)
         } else {

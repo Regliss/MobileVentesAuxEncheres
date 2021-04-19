@@ -1,5 +1,5 @@
 package com.example.mobileventesauxencheres.utils;
 
 public class Constant {
-    public static final String URL = "http://localhost:3030/apiVentes/products";
+    public static final String URL = "https://api-ynov-auction.herokuapp.com/apiVentes/products";
 }
