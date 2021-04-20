@@ -64,12 +64,12 @@ public class HomeActivity extends AppActivity {
     }
 
     private void parseJSON(String response) {
-        ApiProducts[] api = new Gson().fromJson(response, ApiProducts[].class);
+        ApiProducts api = new Gson().fromJson(response, ApiProducts.class);
 
         listViewData.setAdapter(
                 new ProductsAdapter(
                         HomeActivity.this,
-                        R.layout.item_product,api)
+                        R.layout.item_product,api.getProducts())
         );
 
     }

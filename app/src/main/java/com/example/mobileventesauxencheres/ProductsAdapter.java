@@ -21,8 +21,8 @@ import java.util.List;
 public class ProductsAdapter extends ArrayAdapter<ApiProducts> {
 
 
-    public ProductsAdapter(Context context, int resource, ApiProducts[] api) {
-        super(context,resource, api);
+    public ProductsAdapter(Context context, int resource, List<ApiProducts> objects) {
+        super(context,resource, objects);
 
     }
 
@@ -51,9 +51,9 @@ public class ProductsAdapter extends ArrayAdapter<ApiProducts> {
         ApiProducts item = getItem(position);
 
         // 4) affichage (setText)
-        myViewHolder.textViewTitle.setText(item.getTitle());
-        myViewHolder.textViewDescription.setText(item.getDescription());
-        myViewHolder.textViewPrice.setText(item.getPrice());
+        myViewHolder.textViewTitle.setText(item.getProducts().getTitle());
+        myViewHolder.textViewDescription.setText(item.getProducts().getDescription());
+        myViewHolder.textViewPrice.setText(item.getProducts().getPrice());
 
 
         return convertView;
