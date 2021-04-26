@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.mobileventesauxencheres.activities.LoginActivity;
+
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -24,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
                 //TODO: lancement de HomeActivity
-                Intent myIntent = new Intent(MainActivity.this,HomeActivity.class);
+                Intent myIntent = new Intent(MainActivity.this, HomeActivity.class);
                 startActivity(myIntent);
                 finish();
             }

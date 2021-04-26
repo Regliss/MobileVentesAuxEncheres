@@ -15,14 +15,15 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mobileventesauxencheres.models.ApiProducts;
+import com.example.mobileventesauxencheres.models.Products;
 
 import java.util.List;
 
 public class ProductsAdapter extends ArrayAdapter<ApiProducts> {
 
 
-    public ProductsAdapter(Context context, int resource, List<ApiProducts> objects) {
-        super(context,resource, objects);
+    public ProductsAdapter(Context context, int resource, Products objects) {
+        super(context,resource, (List<ApiProducts>) objects);
 
     }
 
