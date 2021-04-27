@@ -14,6 +14,7 @@ import androidx.annotation.Nullable;
 import com.example.mobileventesauxencheres.models.ApiProducts;
 import com.example.mobileventesauxencheres.models.ApiFields;
 import com.example.mobileventesauxencheres.models.ApiRecords;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -41,7 +42,7 @@ public class ProductsAdapter extends ArrayAdapter<ApiRecords> {
             convertView = LayoutInflater.from(getContext()).inflate(resId, null);
 
             // 2) récupération des vues (élements graphiques)
-            //myViewHolder.imageViewProduct = convertView.findViewById(R.id.imageViewProduct);
+            myViewHolder.imageViewProduct = convertView.findViewById(R.id.imageViewProduct);
             myViewHolder.textViewTitle = convertView.findViewById(R.id.textViewTitle);
             myViewHolder.textViewDescription = convertView.findViewById(R.id.textViewDescription);
             myViewHolder.textViewPrice = convertView.findViewById(R.id.textViewPrice);
@@ -55,6 +56,7 @@ public class ProductsAdapter extends ArrayAdapter<ApiRecords> {
         ApiRecords item = getItem(position);
 
         // 4) affichage (setText)
+        Picasso.get().load(item.getFields().getImage()).into(myViewHolder.imageViewProduct);
         myViewHolder.textViewTitle.setText(item.getFields().getTitle());
         myViewHolder.textViewDescription.setText(item.getFields().getDescription());
         myViewHolder.textViewPrice.setText(item.getFields().getPrice());

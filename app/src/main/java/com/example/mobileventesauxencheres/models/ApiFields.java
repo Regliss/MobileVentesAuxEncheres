@@ -34,9 +34,7 @@ public class ApiFields implements Serializable {
         this.description = description;
     }
 
-    public String getImage() {
-        return image;
-    }
+    public String getImage() { return image; }
 
     public void setImage(String image) {
         this.image = image;
