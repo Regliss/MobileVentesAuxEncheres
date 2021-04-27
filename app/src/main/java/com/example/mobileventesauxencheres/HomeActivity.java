@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
@@ -23,6 +24,7 @@ import com.example.mobileventesauxencheres.models.ApiRecords;
 import com.example.mobileventesauxencheres.utils.Constant;
 import com.example.mobileventesauxencheres.utils.FastDialog;
 import com.example.mobileventesauxencheres.utils.Network;
+import com.google.android.material.navigation.NavigationView;
 import com.google.gson.Gson;
 
 public class HomeActivity extends AppActivity {

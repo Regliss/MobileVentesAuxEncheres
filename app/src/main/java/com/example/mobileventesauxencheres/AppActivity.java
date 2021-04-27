@@ -15,13 +15,45 @@ public class AppActivity extends AppCompatActivity {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
-    public boolean onOptionsItemSelected(@NonNull MenuItem item){
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
         switch (item.getItemId()) {
             case android.R.id.home:
-                onBackPressed(); //fermeture activity
+                onBackPressed(); // fermeture de l'activity
                 break;
+            case R.id.ActionShowHome:
+
+                Intent myIntentFavoris2 = new Intent(this, HomeActivity.class);
+                startActivity(myIntentFavoris2);
+                return true;
+
+            case R.id.ActionShowProfil:
+
+                //Intent myIntentMaps = new Intent(this, MapsActivity.class);
+                //startActivity(myIntentMaps);
+                //return true;
+            case R.id.ActionShowProduits:
+
+                //Intent myIntentFavoris = new Intent(this, FavorisActivity.class);
+                //startActivity(myIntentFavoris);
+                //return true;
+            case R.id.ActionShowLogout:
+
+                //Intent myIntentInformation = new Intent(this, InformationActivity.class);
+                //startActivity(myIntentInformation);
+                //return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) { //affichage du menu
+
+        //chargement du menu
+        getMenuInflater().inflate(R.menu.menu_default, menu);
+
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
