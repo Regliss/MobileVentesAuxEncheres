@@ -2,7 +2,7 @@ package com.example.mobileventesauxencheres.models;
 
 import java.io.Serializable;
 
-public class Products implements Serializable {
+public class ApiFields implements Serializable {
     private String title;
     private String price;
     private String description;

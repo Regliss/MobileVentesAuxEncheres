@@ -1,29 +1,30 @@
 package com.example.mobileventesauxencheres;
 
 import android.content.Context;
-import android.database.DataSetObserver;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.ListAdapter;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mobileventesauxencheres.models.ApiProducts;
-import com.example.mobileventesauxencheres.models.Products;
+import com.example.mobileventesauxencheres.models.ApiFields;
+import com.example.mobileventesauxencheres.models.ApiRecords;
 
 import java.util.List;
 
-public class ProductsAdapter extends ArrayAdapter<ApiProducts> {
+public class ProductsAdapter extends ArrayAdapter<ApiRecords> {
+    private int resId;
 
 
-    public ProductsAdapter(Context context, int resource, Products objects) {
-        super(context,resource, (List<ApiProducts>) objects);
+    public ProductsAdapter(Context context, int resource,@NonNull List<ApiRecords> objects) {
+        super(context,resource,objects);
+
+        resId = resource;
 
     }
 
@@ -36,6 +37,8 @@ public class ProductsAdapter extends ArrayAdapter<ApiProducts> {
 
         if(convertView == null) {
             myViewHolder = new ViewHolder(); // instance
+            // 1) chargement du layout R.layout.item_restaurant
+            convertView = LayoutInflater.from(getContext()).inflate(resId, null);
 
             // 2) récupération des vues (élements graphiques)
             //myViewHolder.imageViewProduct = convertView.findViewById(R.id.imageViewProduct);
@@ -49,12 +52,12 @@ public class ProductsAdapter extends ArrayAdapter<ApiProducts> {
         }
 
         // 3) données (Bibliothèques)
-        ApiProducts item = getItem(position);
+        ApiRecords item = getItem(position);
 
         // 4) affichage (setText)
-        myViewHolder.textViewTitle.setText(item.getProducts().getTitle());
-        myViewHolder.textViewDescription.setText(item.getProducts().getDescription());
-        myViewHolder.textViewPrice.setText(item.getProducts().getPrice());
+        myViewHolder.textViewTitle.setText(item.getFields().getTitle());
+        myViewHolder.textViewDescription.setText(item.getFields().getDescription());
+        myViewHolder.textViewPrice.setText(item.getFields().getPrice());
 
 
         return convertView;

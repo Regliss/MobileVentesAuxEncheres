@@ -4,13 +4,13 @@ package com.example.mobileventesauxencheres.models;
 import java.util.List;
 
 public class ApiProducts {
-    private Products products;
+    private List<ApiRecords> records;
 
-    public Products getProducts() {
-        return products;
+    public List<ApiRecords> getRecords() {
+        return records;
     }
 
-    public void setProducts(Products products) {
-        this.products = products;
+    public void setRecords(List<ApiRecords> records) {
+        this.records = records;
     }
 }

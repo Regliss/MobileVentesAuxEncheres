@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -20,6 +22,14 @@ import com.google.gson.Gson;
 
 public class HomeActivity extends AppActivity {
 
+    private ImageView imageViewProduct;
+    private TextView textViewTitle;
+    private TextView textViewDescription;
+    private TextView textViewPrice;
+
+
+
+
     private ListView listViewData;
 
     @Override
@@ -28,6 +38,10 @@ public class HomeActivity extends AppActivity {
         setContentView(R.layout.activity_home);
 
         listViewData = findViewById(R.id.listViewData);
+        imageViewProduct = findViewById(R.id.imageViewProduct);
+        textViewTitle = findViewById(R.id.textViewTitle);
+        textViewDescription = findViewById(R.id.textViewDescription);
+        textViewPrice = findViewById(R.id.textViewPrice);
 
         if (!Network.isNetworkAvailable(HomeActivity.this)) {
             FastDialog.showDialog(
@@ -64,12 +78,18 @@ public class HomeActivity extends AppActivity {
     }
 
     private void parseJSON(String response) {
+//        textViewTitle.setText(null);
+//        textViewDescription.setText(null);
+//        textViewPrice.setText(null);
+
+
         ApiProducts api = new Gson().fromJson(response, ApiProducts.class);
+
 
         listViewData.setAdapter(
                 new ProductsAdapter(
                         HomeActivity.this,
-                        R.layout.item_product,api.getProducts())
+                        R.layout.item_product,api.getRecords())
         );
 
     }
