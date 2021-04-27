@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:title="Home"
+        android:title="Accueil"
         android:id="@+id/ActionShowHome"/>
     <item
         android:title="Profil"

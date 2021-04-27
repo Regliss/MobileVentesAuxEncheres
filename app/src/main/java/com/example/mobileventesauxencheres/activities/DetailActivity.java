@@ -54,7 +54,7 @@ public class DetailActivity extends AppActivity {
             Picasso.get().load(item.getFields().getImage()).into(imageProduct);
             textViewTitleProduct.setText(item.getFields().getTitle());
             textViewDescriptionProduct.setText(item.getFields().getDescription());
-            textViewPriceProduct.setText(item.getFields().getPrice());
+            textViewPriceProduct.setText(item.getFields().getPrice() + "€");
         }
 
     }
