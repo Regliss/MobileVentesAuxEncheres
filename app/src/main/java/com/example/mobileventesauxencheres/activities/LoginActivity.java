@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.android.volley.AuthFailureError;
@@ -18,9 +19,12 @@ import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.mobileventesauxencheres.HomeActivity;
 import com.example.mobileventesauxencheres.R;
 import com.example.mobileventesauxencheres.models.ApiLogin;
 import com.example.mobileventesauxencheres.utils.Constant;
+import com.example.mobileventesauxencheres.utils.FastDialog;
+import com.example.mobileventesauxencheres.utils.Preference;
 import com.google.gson.Gson;
 
 import org.json.JSONException;
@@ -31,6 +35,8 @@ import java.io.UnsupportedEncodingException;
 public class LoginActivity extends AppCompatActivity {
 
     private TextView loginTx, signupTx;
+    private EditText email;
+    private EditText passkey;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +44,9 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         signupTx = findViewById(R.id.signUp);
-        loginTx = findViewById((R.id.logIn));
+        loginTx = findViewById(R.id.logIn);
+        email = findViewById(R.id.email);
+        passkey = findViewById(R.id.passkey);
 
         loginTx.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,8 +54,8 @@ public class LoginActivity extends AppCompatActivity {
                 try {
                     RequestQueue requestQueue = Volley.newRequestQueue(LoginActivity.this);
                     JSONObject jsonBody = new JSONObject();
-                    jsonBody.put("email", "thomas.pomart1@gmail.com");
-                    jsonBody.put("password", "!Thomas1");
+                    jsonBody.put("email", email.getText());
+                    jsonBody.put("password", passkey.getText());
                     final String mRequestBody = jsonBody.toString();
 
                     StringRequest stringRequest = new StringRequest(Request.Method.POST, Constant.URL_LOGIN, new Response.Listener<String>() {
@@ -55,7 +63,12 @@ public class LoginActivity extends AppCompatActivity {
                         public void onResponse(String response) {
                             ApiLogin apiLogin = new Gson().fromJson(response, ApiLogin.class);
                             if (apiLogin.isAuth()) {
+                                Preference.setToken(LoginActivity.this, apiLogin.getToken());
+                                Intent homeIntent = new Intent(LoginActivity.this, HomeActivity.class);
+                                startActivity(homeIntent);
                                 //TODO
+                            } else {
+                                FastDialog.showDialog(LoginActivity.this, FastDialog.SIMPLE_DIALOG, apiLogin.getMessage());
                             }
                             Log.i("LOG_RESPONSE", response);
                         }
