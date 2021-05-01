@@ -1,6 +1,7 @@
 package com.example.mobileventesauxencheres.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkResponse;
@@ -34,9 +36,9 @@ import java.io.UnsupportedEncodingException;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private TextView loginTx, signupTx;
-    private EditText email;
-    private EditText passkey;
+    private CardView loginTx, signupTx;
+    private EditText edEmail;
+    private EditText edPasskey;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,59 +47,15 @@ public class LoginActivity extends AppCompatActivity {
 
         signupTx = findViewById(R.id.signUp);
         loginTx = findViewById(R.id.logIn);
-        email = findViewById(R.id.email);
-        passkey = findViewById(R.id.passkey);
+        edEmail = findViewById(R.id.email);
+        edPasskey = findViewById(R.id.passkey);
+
+        getSupportActionBar().hide();
 
         loginTx.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try {
-                    RequestQueue requestQueue = Volley.newRequestQueue(LoginActivity.this);
-                    JSONObject jsonBody = new JSONObject();
-                    jsonBody.put("email", email.getText());
-                    jsonBody.put("password", passkey.getText());
-                    final String mRequestBody = jsonBody.toString();
-
-                    StringRequest stringRequest = new StringRequest(Request.Method.POST, Constant.URL_LOGIN, new Response.Listener<String>() {
-                        @Override
-                        public void onResponse(String response) {
-                            ApiLogin apiLogin = new Gson().fromJson(response, ApiLogin.class);
-                            if (apiLogin.isAuth()) {
-                                Preference.setToken(LoginActivity.this, apiLogin.getToken());
-                                Intent homeIntent = new Intent(LoginActivity.this, HomeActivity.class);
-                                startActivity(homeIntent);
-                                //TODO
-                            } else {
-                                FastDialog.showDialog(LoginActivity.this, FastDialog.SIMPLE_DIALOG, apiLogin.getMessage());
-                            }
-                            Log.i("LOG_RESPONSE", response);
-                        }
-                    }, new Response.ErrorListener() {
-                        @Override
-                        public void onErrorResponse(VolleyError error) {
-                            Log.e("LOG_RESPONSE", error.toString());
-                        }
-                    }) {
-                        @Override
-                        public String getBodyContentType() {
-                            return "application/json; charset=utf-8";
-                        }
-
-                        @Override
-                        public byte[] getBody() throws AuthFailureError {
-                            try {
-                                return mRequestBody == null ? null : mRequestBody.getBytes("utf-8");
-                            } catch (UnsupportedEncodingException uee) {
-                                VolleyLog.wtf("Unsupported Encoding while trying to get the bytes of %s using %s", mRequestBody, "utf-8");
-                                return null;
-                            }
-                        }
-                    };
-
-                    requestQueue.add(stringRequest);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+                userLogin();
             }
         });
 
@@ -108,5 +66,63 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(homeIntent);
             }
         });
+    }
+
+    private void userLogin() {
+        try {
+            String email = edEmail.getText().toString().trim();
+            String passkey = edPasskey.getText().toString().trim();
+
+            RequestQueue requestQueue = Volley.newRequestQueue(LoginActivity.this);
+            JSONObject jsonBody = new JSONObject();
+            jsonBody.put("email", email);
+            jsonBody.put("password", passkey);
+            final String mRequestBody = jsonBody.toString();
+
+            if(email.isEmpty() || passkey.isEmpty()) {
+                Toast.makeText(this, "Please enter both Email and Password.", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, Constant.URL_LOGIN, new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                    ApiLogin apiLogin = new Gson().fromJson(response, ApiLogin.class);
+                    if (apiLogin.isAuth()) {
+                        Preference.setToken(LoginActivity.this, apiLogin.getToken());
+                        Intent homeIntent = new Intent(LoginActivity.this, HomeActivity.class);
+                        startActivity(homeIntent);
+                        //TODO
+                    } else {
+                        FastDialog.showDialog(LoginActivity.this, FastDialog.SIMPLE_DIALOG, apiLogin.getMessage());
+                    }
+                    Log.i("LOG_RESPONSE", response);
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Log.e("LOG_RESPONSE", error.toString());
+                }
+            }) {
+                @Override
+                public String getBodyContentType() {
+                    return "application/json; charset=utf-8";
+                }
+
+                @Override
+                public byte[] getBody() throws AuthFailureError {
+                    try {
+                        return mRequestBody == null ? null : mRequestBody.getBytes("utf-8");
+                    } catch (UnsupportedEncodingException uee) {
+                        VolleyLog.wtf("Unsupported Encoding while trying to get the bytes of %s using %s", mRequestBody, "utf-8");
+                        return null;
+                    }
+                }
+            };
+
+            requestQueue.add(stringRequest);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 }
