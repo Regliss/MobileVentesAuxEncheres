@@ -10,6 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.mobileventesauxencheres.activities.AccountActivity;
+
 public class AppActivity extends AppCompatActivity {
     protected void showToast(String message){
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
@@ -24,14 +26,14 @@ public class AppActivity extends AppCompatActivity {
                 break;
             case R.id.ActionShowHome:
 
-                Intent myIntentFavoris2 = new Intent(this, HomeActivity.class);
-                startActivity(myIntentFavoris2);
+                Intent intentDetails = new Intent(this, HomeActivity.class);
+                startActivity(intentDetails);
                 return true;
 
             case R.id.ActionShowProfil:
 
-                //Intent myIntentMaps = new Intent(this, MapsActivity.class);
-                //startActivity(myIntentMaps);
+                Intent myIntentAccount = new Intent(this, AccountActivity.class);
+                startActivity(myIntentAccount);
                 //return true;
             case R.id.ActionShowProduits:
 
