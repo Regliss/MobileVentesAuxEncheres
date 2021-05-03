@@ -90,6 +90,8 @@ public class LoginActivity extends AppCompatActivity {
                     ApiLogin apiLogin = new Gson().fromJson(response, ApiLogin.class);
                     if (apiLogin.isAuth()) {
                         Preference.setToken(LoginActivity.this, apiLogin.getToken());
+                        apiLogin.setAuth(true);
+                        Preference.setToken(LoginActivity.this, String.valueOf(apiLogin.isAuth()));
                         Intent homeIntent = new Intent(LoginActivity.this, HomeActivity.class);
                         startActivity(homeIntent);
                         //TODO

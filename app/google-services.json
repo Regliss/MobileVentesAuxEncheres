@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "307238043264",
+    "project_id": "mobileventesauxencheres",
+    "storage_bucket": "mobileventesauxencheres.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:307238043264:android:4829e8691ae84653a63065",
+        "android_client_info": {
+          "package_name": "com.example.mobileventesauxencheres"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "307238043264-k03medik43hutdj2m1oitdpapglad76g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCv_qMMMtVts82LUF3qSACxHpthm74ZuKA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "307238043264-k03medik43hutdj2m1oitdpapglad76g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

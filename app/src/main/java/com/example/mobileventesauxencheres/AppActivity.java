@@ -2,6 +2,7 @@ package com.example.mobileventesauxencheres;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -11,6 +12,9 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.mobileventesauxencheres.activities.AccountActivity;
+import com.example.mobileventesauxencheres.activities.MyProductsActivity;
+import com.example.mobileventesauxencheres.models.ApiLogin;
+import com.google.gson.Gson;
 
 public class AppActivity extends AppCompatActivity {
     protected void showToast(String message){
@@ -37,14 +41,15 @@ public class AppActivity extends AppCompatActivity {
                 //return true;
             case R.id.ActionShowProduits:
 
-                //Intent myIntentFavoris = new Intent(this, FavorisActivity.class);
-                //startActivity(myIntentFavoris);
+                Intent myIntentFavoris = new Intent(this, MyProductsActivity.class);
+                startActivity(myIntentFavoris);
                 //return true;
+
             case R.id.ActionShowLogout:
 
-                //Intent myIntentInformation = new Intent(this, InformationActivity.class);
-                //startActivity(myIntentInformation);
-                //return true;
+//                Intent myIntentLogout = new Intent(this, LogoutActivity.class);
+//                startActivity(myIntentLogout);
+//                return true;
         }
         return super.onOptionsItemSelected(item);
     }
