@@ -11,6 +11,7 @@ import com.example.mobileventesauxencheres.models.ApiRecords;
 import com.example.mobileventesauxencheres.models.ApiUser;
 import com.example.mobileventesauxencheres.utils.FastDialog;
 import com.example.mobileventesauxencheres.utils.Network;
+import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
 public class AccountActivity extends AppActivity {
@@ -26,6 +27,7 @@ public class AccountActivity extends AppActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account);
 
@@ -47,10 +49,13 @@ public class AccountActivity extends AppActivity {
 
         if (getIntent().getExtras() != null) {
             account = (ApiUser) getIntent().getExtras().get("objet");
+            //account = new Gson().fromJson()
 
             textViewLastname.setText(account.getLastName());
             textViewFirstname.setText(account.getFirstName());
             textViewAddress.setText(account.getAddress());
+            textViewPhone.setText(account.getPhone());
+            textViewEmail.setText(account.getEmail());
         }
     }
 }

@@ -38,12 +38,13 @@ public class AppActivity extends AppCompatActivity {
 
                 Intent myIntentAccount = new Intent(this, AccountActivity.class);
                 startActivity(myIntentAccount);
-                //return true;
+                return true;
+
             case R.id.ActionShowProduits:
 
                 Intent myIntentFavoris = new Intent(this, MyProductsActivity.class);
                 startActivity(myIntentFavoris);
-                //return true;
+                return true;
 
             case R.id.ActionShowLogout:
 

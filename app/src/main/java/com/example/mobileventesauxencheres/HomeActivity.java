@@ -21,6 +21,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.mobileventesauxencheres.activities.DetailActivity;
 import com.example.mobileventesauxencheres.models.ApiProducts;
 import com.example.mobileventesauxencheres.models.ApiRecords;
+import com.example.mobileventesauxencheres.models.ApiUser;
 import com.example.mobileventesauxencheres.utils.Constant;
 import com.example.mobileventesauxencheres.utils.FastDialog;
 import com.example.mobileventesauxencheres.utils.Network;
@@ -76,7 +77,7 @@ public class HomeActivity extends AppActivity {
 
 
         ApiProducts api = new Gson().fromJson(response, ApiProducts.class);
-
+        ApiUser account = new Gson().fromJson(response, ApiUser.class);
 
         listViewData.setAdapter(
                 new ProductsAdapter(
