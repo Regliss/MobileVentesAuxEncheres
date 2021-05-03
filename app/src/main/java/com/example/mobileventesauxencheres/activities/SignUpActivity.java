@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -40,8 +41,8 @@ public class SignUpActivity extends AppCompatActivity {
     private EditText editTextPhone;
     private EditText editTextEmail;
     private EditText editTextPassword;
-    private TextView register;
-    private ProgressBar progressBarSignUp;
+    private Button register;
+
 
 
     @Override
@@ -56,9 +57,7 @@ public class SignUpActivity extends AppCompatActivity {
         editTextEmail = findViewById(R.id.editText_email);
         editTextPassword = findViewById(R.id.editText_password);
         register = findViewById(R.id.register);
-        progressBarSignUp = findViewById(R.id.progress_bar_sign_up);
 
-        progressBarSignUp.setVisibility(View.INVISIBLE);
 
         getSupportActionBar().hide();
 

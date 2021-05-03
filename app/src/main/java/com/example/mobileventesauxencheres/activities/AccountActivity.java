@@ -3,6 +3,7 @@ package com.example.mobileventesauxencheres.activities;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.mobileventesauxencheres.AppActivity;
@@ -22,7 +23,7 @@ public class AccountActivity extends AppActivity {
     private TextView textViewAddress;
     private TextView textViewPhone;
     private TextView textViewEmail;
-    private TextView edit;
+    private Button edit;
     private ApiUser account;
 
     @Override

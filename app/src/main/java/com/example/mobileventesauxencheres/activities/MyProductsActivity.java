@@ -72,6 +72,12 @@ public class MyProductsActivity extends AppActivity {
                 return false;
             }
         });
+    }
 
+    public void reset(View view) {
+        Preference.resetMyProducts(MyProductsActivity.this);
+
+        Toast.makeText(MyProductsActivity.this, "Reset My Products List", Toast.LENGTH_SHORT).show();
+        adapter.notifyDataSetChanged();//rafraîchissement
     }
 }

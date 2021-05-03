@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/teal_700"
     tools:context=".activities.SignUpActivity">
 
     <TextView
@@ -143,39 +142,16 @@
                 tools:text="test@test.com"/>
         </LinearLayout>
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            app:cardBackgroundColor="#4B0082"
-            app:cardCornerRadius="25dp"
-            app:cardElevation="10dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:id="@+id/edit"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Modifier"
-                    android:textColor="#fff"
-                    android:layout_centerInParent="true"/>
-            </RelativeLayout>
-
-        </androidx.cardview.widget.CardView>
+        <Button
+            android:id="@+id/edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Modifier"
+            android:textSize="20sp"
+            android:textColor="@android:color/white"
+            android:layout_margin="20dp"
+            android:background="@drawable/shape_button"/>
 
     </LinearLayout>
-
-    <ProgressBar
-        android:id="@+id/progress_bar_sign_up"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:indeterminate="true"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"/>
 
 </RelativeLayout>
