@@ -79,5 +79,7 @@ public class MyProductsActivity extends AppActivity {
 
         Toast.makeText(MyProductsActivity.this, "Reset My Products List", Toast.LENGTH_SHORT).show();
         adapter.notifyDataSetChanged();//rafraîchissement
+        Intent intentRetour = new Intent(MyProductsActivity.this, HomeActivity.class);
+        startActivity(intentRetour);
     }
 }
