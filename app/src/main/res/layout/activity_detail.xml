@@ -94,31 +94,27 @@
 
     </LinearLayout>
 
-    <androidx.cardview.widget.CardView
+    <Button
         android:onClick="submit"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:layout_centerHorizontal="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:layout_gravity="center"
-        app:cardBackgroundColor="#800080"
-        app:cardCornerRadius="25dp"
-        app:cardElevation="10dp" >
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:text="Ajouter à mes Produits"
+        android:background="@drawable/shape_button" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+    <Button
+        android:onClick="updateBid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:text="Enchérir"
+        android:background="@drawable/shape_button" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Ajouter à mes Produits"
-                android:textAllCaps="false"
-                android:textColor="#fff"
-                android:layout_centerInParent="true"/>
-        </RelativeLayout>
 
-    </androidx.cardview.widget.CardView>
 
 
 </LinearLayout>
