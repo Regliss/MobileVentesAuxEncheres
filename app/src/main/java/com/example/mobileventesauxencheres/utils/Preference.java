@@ -43,6 +43,7 @@ public class Preference {
         //ajoute dans les favoris
         apiRecordsList.add(item);
         String json = new Gson().toJson(apiRecordsList);
+        //getPreference(context).edit().clear().apply();
         getPreference(context).edit().putString(PREFERENCE_FAVORIS, json).apply();
     }
 
@@ -79,6 +80,7 @@ public class Preference {
             apiRecordsList.remove(apiRecordsList.get(i));
         }
         String json = new Gson().toJson(apiRecordsList);
-        getPreference(context).edit().putString(PREFERENCE_FAVORIS, json).apply();
+        getPreference(context).edit().clear().apply();
+        //getPreference(context).edit().putString(PREFERENCE_FAVORIS, json).apply();
     }
 }
