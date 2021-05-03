@@ -24,6 +24,7 @@ import java.util.List;
 public class MyProductsActivity extends AppActivity {
 
     private ListView listViewData;
+    private ApiRecords item;
     private List<ApiRecords> records = new ArrayList<>();
 
     private ArrayAdapter<ApiRecords> adapter;
@@ -60,16 +61,17 @@ public class MyProductsActivity extends AppActivity {
             }
         });
 
-    }
+        listViewData.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                item = (ApiRecords) getIntent().getExtras().get("objet");
+                Preference.removeToMyProducts(MyProductsActivity.this, item);
+                records.remove(position);
+                //ListViewData.stringList.remove(position);
+                adapter.notifyDataSetChanged(); //demande de rafraichissement
+                return false;
+            }
+        });
 
-    public void reset(View view) {
-        Preference.resetMyProducts(MyProductsActivity.this);
-
-        Toast.makeText(MyProductsActivity.this, "Reset My Products List", Toast.LENGTH_SHORT).show();
-        adapter.notifyDataSetChanged();//rafraîchissement
-
-        // Intent
-        Intent intentRetour = new Intent(MyProductsActivity.this, HomeActivity.class);
-        startActivity(intentRetour);
     }
 }

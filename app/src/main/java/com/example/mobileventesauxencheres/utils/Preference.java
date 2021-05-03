@@ -46,6 +46,21 @@ public class Preference {
         getPreference(context).edit().putString(PREFERENCE_FAVORIS, json).apply();
     }
 
+    public static void removeToMyProducts(Context context, ApiRecords item) {
+
+        List<ApiRecords> apiRecordsList = getMyProducts(context);
+        for (int i = 0; i < apiRecordsList.size(); i++) {
+            // Supprime le doublon
+//            if (apiRecordsList.get(i).getFields().getLibelle1().toString().equals(item.getFields().getLibelle1().toString())){
+//                apiRecordsList.remove(apiRecordsList.get(i));
+//            }
+        }
+        //supprime dans les favoris
+        apiRecordsList.remove(item);
+        String json = new Gson().toJson(apiRecordsList);
+        getPreference(context).edit().putString(PREFERENCE_FAVORIS, json).apply();
+    }
+
     public  static  List<ApiRecords>  getMyProducts (Context context) {
         List<ApiRecords> apiRecordsList = new ArrayList<>();
 
