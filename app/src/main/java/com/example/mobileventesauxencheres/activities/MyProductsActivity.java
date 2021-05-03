@@ -60,6 +60,7 @@ public class MyProductsActivity extends AppActivity {
             }
         });
 
+
     }
 
     public void reset(View view) {

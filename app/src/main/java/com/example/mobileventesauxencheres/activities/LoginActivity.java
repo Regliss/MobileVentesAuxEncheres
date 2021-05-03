@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,7 +37,7 @@ import java.io.UnsupportedEncodingException;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private CardView loginTx, signupTx;
+    private Button loginTx;
     private EditText edEmail;
     private EditText edPasskey;
 
@@ -45,7 +46,6 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        signupTx = findViewById(R.id.signUp);
         loginTx = findViewById(R.id.logIn);
         edEmail = findViewById(R.id.email);
         edPasskey = findViewById(R.id.passkey);
@@ -59,13 +59,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        signupTx.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent homeIntent = new Intent(LoginActivity.this, SignUpActivity.class);
-                startActivity(homeIntent);
-            }
-        });
     }
 
     private void userLogin() {
@@ -126,5 +119,10 @@ public class LoginActivity extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+    }
+
+    public void signUp(View view) {
+        Intent homeIntent = new Intent(LoginActivity.this, SignUpActivity.class);
+        startActivity(homeIntent);
     }
 }
