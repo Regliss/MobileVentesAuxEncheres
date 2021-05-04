@@ -11,14 +11,12 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.example.mobileventesauxencheres.models.ApiProducts;
-import com.example.mobileventesauxencheres.models.ApiFields;
 import com.example.mobileventesauxencheres.models.ApiRecords;
 import com.squareup.picasso.Picasso;
 
-import java.sql.Date;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
 
 public class ProductsAdapter extends ArrayAdapter<ApiRecords> {
@@ -65,17 +63,11 @@ public class ProductsAdapter extends ArrayAdapter<ApiRecords> {
         myViewHolder.textViewTitle.setText(item.getFields().getTitle());
         myViewHolder.textViewDescription.setText(item.getFields().getDescription());
         myViewHolder.textViewPrice.setText(item.getFields().getPrice() + "€");
-        SimpleDateFormat format = new SimpleDateFormat("dd-MMM-yyyy");
-        try {
-            myViewHolder.textViewDateDebut.setText((CharSequence) format.parse(String.valueOf(item.getFields().getDateStart())));
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        try {
-            myViewHolder.textViewDateFin.setText((CharSequence) format.parse(String.valueOf(item.getFields().getDateEnd())));
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        myViewHolder.textViewDateDebut.setText(item.getFields().getDateStart());
+        myViewHolder.textViewDateFin.setText(item.getFields().getDateEnd());
+
+
+
 
         return convertView;
     }

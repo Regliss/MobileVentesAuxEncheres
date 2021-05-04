@@ -29,6 +29,9 @@ public class DetailActivity extends AppActivity {
     private TextView textViewDescriptionProduct;
     private TextView textViewPriceProduct;
     private ApiRecords item;
+    private TextView textViewDateDebut;
+    private TextView textViewDateFin;
+
 
     @Override
     public void onBackPressed() {
@@ -44,6 +47,9 @@ public class DetailActivity extends AppActivity {
         textViewTitleProduct = findViewById(R.id.textViewTitleProduct);
         textViewDescriptionProduct = findViewById(R.id.textViewDescriptionProduct);
         textViewPriceProduct = findViewById(R.id.textViewPriceProduct);
+        textViewDateDebut = findViewById(R.id.textViewDateDebut);
+        textViewDateFin = findViewById(R.id.textViewDateFin);
+
 
 
         if (!Network.isNetworkAvailable(DetailActivity.this)) {
@@ -63,6 +69,8 @@ public class DetailActivity extends AppActivity {
             textViewTitleProduct.setText(item.getFields().getTitle());
             textViewDescriptionProduct.setText(item.getFields().getDescription());
             textViewPriceProduct.setText(item.getFields().getPrice() + "€");
+            textViewDateDebut.setText(item.getFields().getDateStart());
+            textViewDateFin.setText(item.getFields().getDateEnd());
         }
 
 

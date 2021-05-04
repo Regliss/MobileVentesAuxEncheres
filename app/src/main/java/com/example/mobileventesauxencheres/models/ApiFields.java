@@ -1,15 +1,14 @@
 package com.example.mobileventesauxencheres.models;
 
 import java.io.Serializable;
-import java.util.Date;
 
 public class ApiFields implements Serializable {
     private String title;
     private String price;
     private String description;
     private String image;
-    private Date dateStart;
-    private Date dateEnd;
+    private String dateStart;
+    private String dateEnd;
 
     public String getTitle() {
         return title;
@@ -41,19 +40,19 @@ public class ApiFields implements Serializable {
         this.image = image;
     }
 
-    public Date getDateStart() {
+    public String getDateStart() {
         return dateStart;
     }
 
-    public void setDateStart(Date dateStart) {
+    public void setDateStart(String dateStart) {
         this.dateStart = dateStart;
     }
 
-    public Date getDateEnd() {
+    public String getDateEnd() {
         return dateEnd;
     }
 
-    public void setDateEnd(Date dateEnd) {
+    public void setDateEnd(String dateEnd) {
         this.dateEnd = dateEnd;
     }
 }
