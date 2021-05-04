@@ -61,7 +61,7 @@ public class ProductsAdapter extends ArrayAdapter<ApiRecords> {
         // 4) affichage (setText)
         Picasso.get().load(item.getFields().getImage()).into(myViewHolder.imageViewProduct);
         myViewHolder.textViewTitle.setText(item.getFields().getTitle());
-        myViewHolder.textViewDescription.setText(item.getFields().getDescription());
+        //myViewHolder.textViewDescription.setText(item.getFields().getDescription());
         myViewHolder.textViewPrice.setText(item.getFields().getPrice() + "€");
         myViewHolder.textViewDateDebut.setText(item.getFields().getDateStart());
         myViewHolder.textViewDateFin.setText(item.getFields().getDateEnd());
