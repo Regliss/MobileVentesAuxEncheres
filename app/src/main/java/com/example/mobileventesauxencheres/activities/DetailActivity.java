@@ -47,9 +47,13 @@ public class DetailActivity extends AppActivity {
     private TextView textViewTitleProduct;
     private TextView textViewDescriptionProduct;
     private TextView textViewPriceProduct;
-    private ApiRecords item;
     private TextView textViewDateDebut;
     private TextView textViewDateFin;
+    private TextView textViewCategory;
+
+
+    private ApiRecords item;
+
 
 
     @Override
@@ -68,6 +72,7 @@ public class DetailActivity extends AppActivity {
         textViewPriceProduct = findViewById(R.id.textViewPriceProduct);
         textViewDateDebut = findViewById(R.id.textViewDateDebut);
         textViewDateFin = findViewById(R.id.textViewDateFin);
+        textViewCategory = findViewById(R.id.textViewCategory);
 
         if (!Network.isNetworkAvailable(DetailActivity.this)) {
             FastDialog.showDialog(
@@ -84,6 +89,7 @@ public class DetailActivity extends AppActivity {
 
             Picasso.get().load(item.getFields().getImage()).into(imageProduct);
             textViewTitleProduct.setText(item.getFields().getTitle());
+            textViewCategory.setText(item.getFields().getCategory().getTitle());
             textViewDescriptionProduct.setText(item.getFields().getDescription());
             textViewPriceProduct.setText(item.getFields().getPrice() + "€");
             textViewDateDebut.setText(item.getFields().getDateStart());
@@ -117,10 +123,22 @@ public class DetailActivity extends AppActivity {
                     item = (ApiRecords) getIntent().getExtras().get("objet");
                     try {
                         String editBid = edt.getText().toString().trim();
+                        String title = textViewTitleProduct.getText().toString().trim();
+                        String description = textViewDescriptionProduct.getText().toString().trim();
+                        String image = item.getFields().getImage().trim();
+                        String category = item.getFields().getCategory().get_id().trim() ;
+                        String dateStart = textViewDateDebut.getText().toString().trim();
+                        String dateEnd = textViewDateFin.getText().toString().trim();
 
                         RequestQueue requestQueue = Volley.newRequestQueue(DetailActivity.this);
                         JSONObject jsonBody = new JSONObject();
                         jsonBody.put("price", editBid);
+                        jsonBody.put("title", title);
+                        jsonBody.put("image", image);
+                        jsonBody.put("description", description);
+                        jsonBody.put("category", category);
+                        jsonBody.put("dateStart", dateStart);
+                        jsonBody.put("dateEnd", dateEnd);
                         final String mRequestBody = jsonBody.toString();
 
                         if(editBid.isEmpty()) {

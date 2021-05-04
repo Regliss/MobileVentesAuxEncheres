@@ -10,6 +10,7 @@ public class ApiFields implements Serializable {
     private String image;
     private String dateStart;
     private String dateEnd;
+    private ApiCategory category;
 
     public String getTitle() {
         return title;
@@ -63,5 +64,13 @@ public class ApiFields implements Serializable {
 
     public void set_id(String _id) {
         this._id = _id;
+    }
+
+    public ApiCategory getCategory() {
+        return category;
+    }
+
+    public void setCategory(ApiCategory category) {
+        this.category = category;
     }
 }
