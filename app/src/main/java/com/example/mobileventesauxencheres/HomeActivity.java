@@ -75,9 +75,7 @@ public class HomeActivity extends AppActivity {
 
     private void parseJSON(String response) {
 
-
         ApiProducts api = new Gson().fromJson(response, ApiProducts.class);
-        ApiUser account = new Gson().fromJson(response, ApiUser.class);
 
         listViewData.setAdapter(
                 new ProductsAdapter(

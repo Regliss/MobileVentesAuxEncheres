@@ -60,15 +60,6 @@ public class MyProductsActivity extends AppActivity {
             }
         });
 
-        listViewData.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                records.remove(position);
-                //ListViewData.stringList.remove(position);
-                adapter.notifyDataSetChanged(); //demande de rafraichissement
-                return false;
-            }
-        });
     }
 
     public void reset(View view) {

@@ -3,6 +3,7 @@ package com.example.mobileventesauxencheres.models;
 import java.io.Serializable;
 
 public class ApiFields implements Serializable {
+    private String _id;
     private String title;
     private String price;
     private String description;
@@ -54,5 +55,13 @@ public class ApiFields implements Serializable {
 
     public void setDateEnd(String dateEnd) {
         this.dateEnd = dateEnd;
+    }
+
+    public String get_id() {
+        return _id;
+    }
+
+    public void set_id(String _id) {
+        this._id = _id;
     }
 }

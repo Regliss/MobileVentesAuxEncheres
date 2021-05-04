@@ -6,7 +6,7 @@ android:padding="10dp"
 android:orientation="vertical">
 
 <EditText
-    android:id="@+id/edit1"
+    android:id="@+id/editText_bid"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:inputType="text" />
