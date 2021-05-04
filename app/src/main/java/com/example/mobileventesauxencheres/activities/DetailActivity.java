@@ -154,13 +154,13 @@ public class DetailActivity extends AppActivity {
 //                                    Preference.setToken(LoginActivity.this, apiLogin.getToken());
 //                                    apiLogin.setAuth(true);
 //                                    Preference.setToken(LoginActivity.this, String.valueOf(apiLogin.isAuth()));
-//                                    Intent homeIntent = new Intent(LoginActivity.this, HomeActivity.class);
-//                                    startActivity(homeIntent);
+                                    Intent homeIntent = new Intent(DetailActivity.this, HomeActivity.class);
+                                    startActivity(homeIntent);
 //                                    //TODO
 //                                } else {
 //                                    FastDialog.showDialog(LoginActivity.this, FastDialog.SIMPLE_DIALOG, apiLogin.getMessage());
 //                                }
-//                                Log.i("LOG_RESPONSE", response);
+                                Log.i("LOG_RESPONSE", response);
                             }
                         }, new Response.ErrorListener() {
                             @Override
